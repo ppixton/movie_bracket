@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "940439866279",
+    "project_id": "brackets-7db43",
+    "storage_bucket": "brackets-7db43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940439866279:android:9a3599b5be526e9c070482",
+        "android_client_info": {
+          "package_name": "com.example.movie_bracket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940439866279-2q0io3ikab16fr0642lnh92d4ec2lv1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6PLNSf92X9OHYpnxHk-lHGU7b2RypWU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940439866279-2q0io3ikab16fr0642lnh92d4ec2lv1j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "940439866279-3u1tfdh70q70nt8ctde6vi4v49kvsg5p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movieBracket.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
