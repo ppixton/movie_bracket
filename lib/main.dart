@@ -13,10 +13,132 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Movie Bracket App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
-      home: const Login(title: 'Movie Bracket Home Page'),
+      home: const CreateOrJoinPage(title: 'Welcome'),
+    );
+  }
+}
+
+class CreateOrJoinPage extends StatelessWidget {
+  const CreateOrJoinPage({Key? key, required this.title}) : super(key: key);
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text(title)),
+      ),
+      body: Column(
+        children: [
+          Center(
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const HostBracketPage(
+                    title: 'Lobby',
+                  );
+                }));
+              },
+              child: const Text('Create Bracket'),
+            ),
+          ),
+          Center(
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const EnterJoinCodePage(title: 'Enter Lobby Code');
+                  },
+                ));
+              },
+              child: const Text('Join Bracket'),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class HostBracketPage extends StatelessWidget {
+  const HostBracketPage({Key? key, required this.title}) : super(key: key);
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: Column(
+        children: [
+          const Center(
+            child: Text('JKLB'),
+          ),
+          Center(
+            child: TextButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const CreateOrJoinPage(title: 'Welcome');
+                    },
+                  ));
+                },
+                child: const Text('Go Back')),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class EnterJoinCodePage extends StatefulWidget {
+  const EnterJoinCodePage({super.key, required this.title});
+  final String title;
+
+  @override
+  State<EnterJoinCodePage> createState() => _EnterJoinCodeState();
+}
+
+class _EnterJoinCodeState extends State<EnterJoinCodePage> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController joinCodeController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title)),
+      body: Form(
+        key: _formKey,
+        child: Column(children: [
+          Center(
+            child: TextFormField(
+              controller: joinCodeController,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(), labelText: "Enter Join Code"),
+            ),
+          ),
+          Center(
+            child: TextButton(
+              onPressed: () {},
+              child: const Text('Join Bracket'),
+            ),
+          ),
+          Center(
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const CreateOrJoinPage(title: 'Welcome');
+                  },
+                ));
+              },
+              child: const Text('Back'),
+            ),
+          )
+        ]),
+      ),
     );
   }
 }
@@ -102,7 +224,6 @@ class _LoginState extends State<Login> {
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key, required this.user});
-
   final String user;
 
   @override
