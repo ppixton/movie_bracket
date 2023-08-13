@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_bracket/screens/landing_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,129 +21,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class CreateOrJoinPage extends StatelessWidget {
-  const CreateOrJoinPage({Key? key, required this.title}) : super(key: key);
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text(title)),
-      ),
-      body: Column(
-        children: [
-          Center(
-            child: TextButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const HostBracketPage(
-                    title: 'Lobby',
-                  );
-                }));
-              },
-              child: const Text('Create Bracket'),
-            ),
-          ),
-          Center(
-            child: TextButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return const EnterJoinCodePage(title: 'Enter Lobby Code');
-                  },
-                ));
-              },
-              child: const Text('Join Bracket'),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class HostBracketPage extends StatelessWidget {
-  const HostBracketPage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Column(
-        children: [
-          const Center(
-            child: Text('JKLB'),
-          ),
-          Center(
-            child: TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                      return const CreateOrJoinPage(title: 'Welcome');
-                    },
-                  ));
-                },
-                child: const Text('Go Back')),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class EnterJoinCodePage extends StatefulWidget {
-  const EnterJoinCodePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<EnterJoinCodePage> createState() => _EnterJoinCodeState();
-}
-
-class _EnterJoinCodeState extends State<EnterJoinCodePage> {
-  final _formKey = GlobalKey<FormState>();
-  TextEditingController joinCodeController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: Form(
-        key: _formKey,
-        child: Column(children: [
-          Center(
-            child: TextFormField(
-              controller: joinCodeController,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(), labelText: "Enter Join Code"),
-            ),
-          ),
-          Center(
-            child: TextButton(
-              onPressed: () {},
-              child: const Text('Join Bracket'),
-            ),
-          ),
-          Center(
-            child: TextButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return const CreateOrJoinPage(title: 'Welcome');
-                  },
-                ));
-              },
-              child: const Text('Back'),
-            ),
-          )
-        ]),
-      ),
-    );
-  }
-}
-
+//This is old stuff but may be useful
 class Login extends StatefulWidget {
   const Login({super.key, required this.title});
   final String title;
